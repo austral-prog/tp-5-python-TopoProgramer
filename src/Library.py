@@ -4,10 +4,10 @@ from src.User import User
 
 class Library:
     def __init__(self)->None:
-        self.__books = []
-        self.__users = []
-        self.__checked_out_books = []
-        self.__checked_in_books = []
+        self.__books: list[Book] = []
+        self.__users: list[User] = []
+        self.__checked_out_books: list[Book] = []
+        self.__checked_in_books: list[Book] = []
 
     # Getters
     def get_books(self)->list[Book]:
