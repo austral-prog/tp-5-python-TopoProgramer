@@ -4,26 +4,26 @@ from src.User import User
 
 class Library:
     def __init__(self):
-        self.__books = []
-        self.__users = []
-        self.__checked_out_books = []
-        self.__checked_in_books = []
+        self.__books: list[Book] = []
+        self.__users: list[User] = []
+        self.__checked_out_books: list[Book] = []
+        self.__checked_in_books: list[Book] = []
 
     # Getters
-    def get_books(self)->list:
+    def get_books(self)->list[Book]:
         return self.__books
 
-    def get_users(self)->list:
+    def get_users(self)->list[User]:
         return self.__users
 
-    def get_checked_out_books(self)->list:
+    def get_checked_out_books(self)->list[Book]:
         return self.__checked_out_books
 
-    def get_checked_in_books(self)->list:
+    def get_checked_in_books(self)->list[Book]:
         return self.__checked_in_books
 
     # 1.1 Add Book
-    def add_book(self, isbn, title, author)->None:
+    def add_book(self, isbn:str, title:str, author:str)->None:
         libro = Book(isbn, title, author)  # Crear una instancia de Book
         self.__books.append(libro)  # Agregar la instancia a la lista de libros
 
@@ -33,7 +33,7 @@ class Library:
                 print(book)  # Esto llamará al método __str__ de Book para cada libro.
 
         # 2.1 Check out book
-    def check_out_book(self, isbn, dni, due_date) -> str:
+    def check_out_book(self, isbn:str, dni:int, due_date:str) -> str:
         # Buscar el libro por ISBN
         for libro in self.__books:
             if libro.get_isbn() == isbn:
@@ -50,7 +50,7 @@ class Library:
         return f"Unable to find the data for the values: ISBN {isbn} and DNI: {dni}"
 
     # 2.2 Check in book
-    def check_in_book(self, isbn, dni, returned_date) -> str:
+    def check_in_book(self, isbn:str, dni:int, returned_date:str) -> str:
         for libro in self.__books:
             if libro.get_isbn() == isbn:
                 if not libro.is_available():
@@ -64,6 +64,6 @@ class Library:
         return f"Book {isbn} is not available or already checked in"
 
     # Utils
-    def add_user(self, dni, name)->None:
+    def add_user(self, dni:int, name:str)->None:
         user = User(dni, name)
         self.__users.append(user)   

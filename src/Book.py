@@ -1,4 +1,5 @@
-from typing import Self
+from typing_extensions import Self
+
 
 
 class Book:
@@ -37,5 +38,7 @@ class Book:
     def __str__(self) -> str:
         return f"ISBN: {self.__isbn}, Title: {self.__title}, Author: {self.__author}"
 
-    def __eq__(self, other:Self)->bool:
-        return self.get_isbn() == other.get_isbn()
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Book):
+            return self.get_isbn() == other.get_isbn()
+        return NotImplemented
