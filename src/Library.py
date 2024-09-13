@@ -3,7 +3,7 @@ from src.User import User
 
 
 class Library:
-    def __init__(self):
+    def __init__(self)->None:
         self.__books = []
         self.__users = []
         self.__checked_out_books = []
