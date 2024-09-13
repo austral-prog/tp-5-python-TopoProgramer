@@ -1,6 +1,4 @@
-from typing_extensions import Self
-
-
+from typing import Self
 
 class Book:
 
@@ -28,7 +26,7 @@ class Book:
         return self.__checkout_num
 
     # Setters
-    def set_available(self, available)->None:
+    def set_available(self, available:bool)->None:
         self.__available = available
 
     def increment_checkout_num(self)->None:
